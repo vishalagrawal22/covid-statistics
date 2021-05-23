@@ -1,0 +1,26 @@
+* {
+    background-color: #2c7da0;
+}
+
+body {
+    margin: 0%;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #003566;
+    width: 100vw;
+    height: 10vh;
+}
+
+.nav-item {
+    font-size: 3vw;
+    background-color: #003566;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: white;
+}
