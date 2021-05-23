@@ -1,7 +1,6 @@
 $(document).ready(function() {
     let debug = 0;
-    let currently_using = 1;
-    if (currently_using) {
+    if (config.using_stats) {
         // getting current date for api call
         let today = new Date();
         let day = Number(String(today.getDate()).padStart(2, '0')) - debug;
@@ -9,7 +8,7 @@ $(document).ready(function() {
         let year = today.getFullYear();
         let api_date = `${year}-${month}-${day}`;
         // console.log(api_date);
-        const api_key = config.COVID193_KEY;
+        const api_key = config.RAPIDAPI_KEY;
         let link = "https://covid-193.p.rapidapi.com/history?country=all&day=" + api_date;
         // console.log(link);
 
