@@ -5,12 +5,13 @@ const config = {
 
     // Correctness Factor
     // The number of day before the current day for which data is needed
-    // It is used for removing and testing anybugs in API
+    // It is used for removing and testing any bugs in API
     // Recommened value >= 1 because of the Second covid API
     // First API used for world stats is live (no correctness Factor needed).
     correctnessFactor: 2,
 
-    // Development Variables do not alter if you only want to test the site
+    // Development Variables 
+    // do not alter if you only want to test the site
     usingWorldStatsAPI: 1,
     usingUserLocation: 1,
     usingCovidAPIForUserLocation: 1,
