@@ -42,7 +42,7 @@ $(document).ready(function() {
             // console.log(country);
             // console.log(state);
             if (config.get_location_stats) {
-                let debug = 1;
+                let debug = 2;
                 let today = new Date();
                 let day = Number(String(today.getDate()).padStart(2, '0')) - debug;
                 let month = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -63,19 +63,19 @@ $(document).ready(function() {
 
                 function displayData(deaths, recovered, confirmed, active) {
                     let confirmed_para = $("<p></p>").text(`Confirmed Cases: ${confirmed}`);
-                    $("body").append(confirmed_para);
+                    $(".covid-data").append(confirmed_para);
                     let active_para = $("<p></p>").text(`Active Cases: ${active}`);
-                    $("body").append(active_para);
+                    $(".covid-data").append(active_para);
                     let recovered_para = $("<p></p>").text(`Recovered: ${recovered}`);
-                    $("body").append(recovered_para);
+                    $(".covid-data").append(recovered_para);
                     let deaths_para = $("<p></p>").text(`Deaths: ${deaths}`);
-                    $("body").append(deaths_para);
+                    $(".covid-data").append(deaths_para);
                 }
 
                 function handleUserStateData(response) {
                     // console.log(response);
                     let stateHeader = $("<h1></h1>").text(`${state}'s Data`);
-                    $("body").append(stateHeader);
+                    $(".covid-data").append(stateHeader);
                     displayData(response["deaths"], response["recovered"], response["confirmed"], response["active"]);
                 }
 
@@ -96,7 +96,7 @@ $(document).ready(function() {
                         }
                     }
                     let countryHeader = $("<h1></h1>").text(`${country}'s Data`);
-                    $("body").append(countryHeader);
+                    $(".covid-data").append(countryHeader);
                     displayData(country_deaths, country_recovered, country_confirmed, country_active);
                 });
             }

@@ -1,6 +1,7 @@
 $(document).ready(function() {
     let debug = 0;
     if (config.using_stats) {
+        console.log("Retrieving World Data");
         // getting current date for api call
         let today = new Date();
         let day = Number(String(today.getDate()).padStart(2, '0')) - debug;
@@ -10,7 +11,7 @@ $(document).ready(function() {
         // console.log(api_date);
         const api_key = config.RAPIDAPI_KEY;
         let link = "https://covid-193.p.rapidapi.com/history?country=all&day=" + api_date;
-        // console.log(link);
+        console.log(`Retrieving info for date: ${api_date}`);
 
         const settings = {
             "async": true,
@@ -24,7 +25,8 @@ $(document).ready(function() {
         };
 
         $.ajax(settings).done(function(response) {
-            // console.log(response.response);
+            console.log("API Response Received");
+            console.log(response.response);
             let data_outer_array = response.response;
 
             let cases_data = data_outer_array[0]["cases"];
@@ -57,19 +59,19 @@ $(document).ready(function() {
 
             // TOTAL STATS
             let total_cases_para = $("<p></p>").text(`Total Cases: ${get_comma_number(total_cases)}`);
-            $("body").append(total_cases_para);
+            $(".world-data").append(total_cases_para);
             let total_deaths_para = $("<p></p>").text(`Total Deaths: ${get_comma_number(total_deaths)}`);
-            $("body").append(total_deaths_para);
+            $(".world-data").append(total_deaths_para);
             let total_recovered_para = $("<p></p>").text(`Total Recovered Cases: ${get_comma_number(total_recovered)}`);
-            $("body").append(total_recovered_para);
+            $(".world-data").append(total_recovered_para);
             let total_active_para = $("<p></p>").text(`Total Active Cases: ${get_comma_number(total_active_cases)}`);
-            $("body").append(total_active_para);
+            $(".world-data").append(total_active_para);
 
             // TODAY STATS
             let new_cases_para = $("<p></p>").text(`New Cases: ${get_comma_number(cases_today)}`);
-            $("body").append(new_cases_para);
+            $(".world-data").append(new_cases_para);
             let new_deaths_para = $("<p></p>").text(`New Deaths: ${get_comma_number(deaths_today)}`);
-            $("body").append(new_deaths_para);
+            $(".world-data").append(new_deaths_para);
         });
     }
 });
