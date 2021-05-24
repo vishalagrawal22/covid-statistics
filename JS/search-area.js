@@ -28,8 +28,8 @@ $(document).ready(function() {
         });
 
         function locationFound(country, state) {
-            if (config.searchLocation) {
-                let debug = 2;
+            if (config.usingCovidAPIForSearchedLocation) {
+                let debug = config.correctnessFactor;
                 let today = new Date();
                 let day = Number(String(today.getDate()).padStart(2, '0')) - debug;
                 let month = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!

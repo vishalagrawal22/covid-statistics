@@ -1,4 +1,6 @@
-if (config.generate_state_list_from_iso) {
+console.log("Generator Starts");
+if (config.runGenerator) {
+    console.log("runGenerator is True");
     $(document).ready(function() {
         const settings = {
             "async": true,

@@ -17,7 +17,7 @@ $(document).ready(function() {
     function getReadableLocation(latitude, longitude) {
         let country = "India";
         let state = "Delhi";
-        if (config.using_location) {
+        if (config.usingUserLocation) {
             let endPointUrl = "https://us1.locationiq.com";
             const APIKey = config.LOCATIONQ_KEY;
             let link = `${endPointUrl}/v1/reverse.php?key=${APIKey}&lat=${latitude}&lon=${longitude}&format=json`;
@@ -42,8 +42,8 @@ $(document).ready(function() {
         }
 
         function locationFound(country, state) {
-            if (config.searchLocation) {
-                let debug = 2;
+            if (config.usingCovidAPIForUserLocation) {
+                let debug = config.correctnessFactor;
                 let today = new Date();
                 let day = Number(String(today.getDate()).padStart(2, '0')) - debug;
                 let month = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!

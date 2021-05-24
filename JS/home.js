@@ -1,6 +1,7 @@
 $(document).ready(function() {
-    let debug = 0;
-    if (config.using_stats) {
+    let debug = config.correctnessFactor;
+    debug = 0;
+    if (config.usingWorldStatsAPI) {
         console.log("Retrieving World Data");
         // getting current date for api call
         let today = new Date();
