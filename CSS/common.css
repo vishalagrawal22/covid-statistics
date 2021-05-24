@@ -63,7 +63,7 @@ form {
 }
 
 .covid-data {
-    margin-top: 4vh;
+    padding-top: 4vh;
     display: flex;
 }
 
@@ -86,4 +86,8 @@ form {
 
 .hidden {
     display: none;
+}
+
+.location-data {
+    padding-top: 3vh;
 }

@@ -57,21 +57,12 @@ $(document).ready(function() {
                 return ans;
             }
 
-            // TOTAL STATS
-            let total_cases_para = $("<p></p>").text(`Total Cases: ${get_comma_number(total_cases)}`);
-            $(".world-data").append(total_cases_para);
-            let total_deaths_para = $("<p></p>").text(`Total Deaths: ${get_comma_number(total_deaths)}`);
-            $(".world-data").append(total_deaths_para);
-            let total_recovered_para = $("<p></p>").text(`Total Recovered Cases: ${get_comma_number(total_recovered)}`);
-            $(".world-data").append(total_recovered_para);
-            let total_active_para = $("<p></p>").text(`Total Active Cases: ${get_comma_number(total_active_cases)}`);
-            $(".world-data").append(total_active_para);
-
-            // TODAY STATS
-            let new_cases_para = $("<p></p>").text(`New Cases: ${get_comma_number(cases_today)}`);
-            $(".world-data").append(new_cases_para);
-            let new_deaths_para = $("<p></p>").text(`New Deaths: ${get_comma_number(deaths_today)}`);
-            $(".world-data").append(new_deaths_para);
+            $(`.world-data > div > .total > .value`).text(" " + get_comma_number(total_cases));
+            $(`.world-data > div > .active > .value`).text(" " + get_comma_number(total_active_cases));
+            $(`.world-data > div > .recovered > .value`).text(" " + get_comma_number(total_recovered));
+            $(`.world-data > div > .deaths > .value`).text(" " + get_comma_number(total_deaths));
+            $(`.world-data > div > .new-cases > .value`).text(" " + get_comma_number(cases_today));
+            $(`.world-data > div > .new-deaths > .value`).text(" " + get_comma_number(deaths_today));
         });
     }
 });
