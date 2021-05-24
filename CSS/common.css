@@ -42,3 +42,48 @@
 .value {
     display: inline-block;
 }
+
+form {
+    height: 40vh;
+    width: 80vw;
+    margin: auto;
+    padding-top: 5vh;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5vh;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 100%;
+    width: 50%;
+}
+
+.covid-data {
+    margin-top: 4vh;
+    display: flex;
+}
+
+.flex-data {
+    padding: 3vw;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.data-container {
+    width: 40vw;
+    height: 30vh;
+}
+
+.data-heading {
+    margin-bottom: 2vh;
+}
+
+.hidden {
+    display: none;
+}

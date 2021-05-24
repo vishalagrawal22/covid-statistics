@@ -1,7 +1,7 @@
 $(document).ready(function() {
     function getLocation() {
         if (navigator.geolocation) {
-            //console.log("Successfully fetch location");
+            console.log("Successfully fetch location");
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
             alert("Geolocation is not supported by this browser.");
@@ -29,7 +29,10 @@ $(document).ready(function() {
             };
 
             $.ajax(settings).done(function(response) {
-                // console.log(response);
+                console.log(response);
+                $(`.location-data > div > div > div > .district > .value`).text(" " + response["address"]["state_district"]);
+                $(`.location-data > div > div > div > .state > .value`).text(" " + response["address"]["state"]);
+                $(`.location-data > div > div > div > .country > .value`).text(" " + response["address"]["country"]);
                 country = response["address"]["country"];
                 state = response["address"]["state"];
                 locationFound(country, state);
@@ -84,13 +87,13 @@ $(document).ready(function() {
                 }
 
                 $.ajax(settings).done(function(response) {
-                    console.log(response);
+                    // console.log(response);
                     let country_deaths = 0;
                     let country_recovered = 0;
                     let country_confirmed = 0;
                     let country_active = 0;
                     for (state_data of response["data"]) {
-                        console.log(state_data);
+                        // console.log(state_data);
                         country_deaths += state_data["deaths"];
                         country_recovered += state_data["recovered"];
                         country_confirmed += state_data["confirmed"];

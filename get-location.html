@@ -25,19 +25,26 @@
         </a>
     </nav>
     <section class="main">
-        <section>
-            <form>
-                <div class="form-group form-container div-center form-blured-background">
-                    <select class="form-select country-menu" aria-label="country-selector">
-                        <option selected>Choose your country</option>
-                        <option value="India">India</option>
-                    </select>
-                    <select class="form-select state-menu" aria-label="state-selector" disabled>
-                        <option selected>Choose your state</option>
-                    </select>
-                    <button type="button" class="btn btn-primary query">Submit</button>
+        <section class="location-data">
+            <div class="data-container div-center">
+                <div class="flex-data data-blured-background">
+                    <div class="text-info">
+                        <h4 class="district">District:
+                            <p class="value">-</p>
+                        </h4>
+                    </div>
+                    <div class="text-info">
+                        <h4 class="state">State:
+                            <p class="value">-</p>
+                        </h4>
+                    </div>
+                    <div class="text-info">
+                        <h4 class="country">Country:
+                            <p class="value">-</p>
+                        </h4>
+                    </div>
                 </div>
-            </form>
+            </div>
         </section>
         <section class="covid-data hidden">
             <div class="data-container div-center">
