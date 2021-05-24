@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.getJSON("./Supported Countries/data.json", function(country_drop_down) {
         for (let country in country_drop_down) {
-            if (country_drop_down[country].length == 0 || country == "India") {
+            if (country_drop_down[country].length == 0) {
                 continue;
             }
             let country_options = $("<option></option>").attr("value", country).text(country);
