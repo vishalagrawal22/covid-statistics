@@ -39,9 +39,7 @@ $(document).ready(function() {
         }
 
         function locationFound(country, state) {
-            // console.log(country);
-            // console.log(state);
-            if (config.get_location_stats) {
+            if (config.searchLocation) {
                 let debug = 2;
                 let today = new Date();
                 let day = Number(String(today.getDate()).padStart(2, '0')) - debug;
@@ -49,7 +47,7 @@ $(document).ready(function() {
                 let year = today.getFullYear();
                 let api_date = `${year}-${month}-${day}`;
                 let api_url = `https://covid-19-statistics.p.rapidapi.com/reports?date=${api_date}&region_name=${country}`;
-                // console.log(api_url);
+                console.log(api_url);
                 const settings = {
                     "async": true,
                     "crossDomain": true,
@@ -61,32 +59,38 @@ $(document).ready(function() {
                     }
                 };
 
-                function displayData(deaths, recovered, confirmed, active) {
-                    let confirmed_para = $("<p></p>").text(`Confirmed Cases: ${confirmed}`);
-                    $(".covid-data").append(confirmed_para);
-                    let active_para = $("<p></p>").text(`Active Cases: ${active}`);
-                    $(".covid-data").append(active_para);
-                    let recovered_para = $("<p></p>").text(`Recovered: ${recovered}`);
-                    $(".covid-data").append(recovered_para);
-                    let deaths_para = $("<p></p>").text(`Deaths: ${deaths}`);
-                    $(".covid-data").append(deaths_para);
+                function get_comma_number(number) {
+                    num_str = String(number);
+                    let ans = "";
+                    for (let index = 0; index < num_str.length; index++) {
+                        if (index % 3 == 0 && index != 0) {
+                            ans = ", " + ans;
+                        }
+                        ans = num_str[num_str.length - 1 - index] + ans;
+                    }
+                    return ans;
+                }
+
+                function displayData(deaths, recovered, confirmed, active, type) {
+                    $(`.${type}-data > div > .total > .value`).text(" " + get_comma_number(confirmed));
+                    $(`.${type}-data > div > .active > .value`).text(" " + get_comma_number(active));
+                    $(`.${type}-data > div > .recovered > .value`).text(" " + get_comma_number(recovered));
+                    $(`.${type}-data > div > .deaths > .value`).text(" " + get_comma_number(deaths));
                 }
 
                 function handleUserStateData(response) {
-                    // console.log(response);
-                    let stateHeader = $("<h1></h1>").text(`${state}'s Data`);
-                    $(".covid-data").append(stateHeader);
-                    displayData(response["deaths"], response["recovered"], response["confirmed"], response["active"]);
+                    $(".state-data > div > .topic > .value").text(`${state}'s Data`);
+                    displayData(response["deaths"], response["recovered"], response["confirmed"], response["active"], "state");
                 }
 
                 $.ajax(settings).done(function(response) {
-                    // console.log(response);
+                    console.log(response);
                     let country_deaths = 0;
                     let country_recovered = 0;
                     let country_confirmed = 0;
                     let country_active = 0;
                     for (state_data of response["data"]) {
-                        // console.log(state_data);
+                        console.log(state_data);
                         country_deaths += state_data["deaths"];
                         country_recovered += state_data["recovered"];
                         country_confirmed += state_data["confirmed"];
@@ -95,9 +99,9 @@ $(document).ready(function() {
                             handleUserStateData(state_data);
                         }
                     }
-                    let countryHeader = $("<h1></h1>").text(`${country}'s Data`);
-                    $(".covid-data").append(countryHeader);
-                    displayData(country_deaths, country_recovered, country_confirmed, country_active);
+                    $(".country-data > div > .topic > .value").text(`${country}'s Data`);
+                    displayData(country_deaths, country_recovered, country_confirmed, country_active, "country");
+                    $(".covid-data").removeClass("hidden");
                 });
             }
         }

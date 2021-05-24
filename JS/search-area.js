@@ -29,7 +29,6 @@ $(document).ready(function() {
 
         function locationFound(country, state) {
             if (config.searchLocation) {
-                $(".covid-data").empty();
                 let debug = 2;
                 let today = new Date();
                 let day = Number(String(today.getDate()).padStart(2, '0')) - debug;
@@ -49,22 +48,28 @@ $(document).ready(function() {
                     }
                 };
 
-                function displayData(deaths, recovered, confirmed, active) {
-                    let confirmed_para = $("<p></p>").text(`Confirmed Cases: ${confirmed}`);
-                    $(".covid-data").append(confirmed_para);
-                    let active_para = $("<p></p>").text(`Active Cases: ${active}`);
-                    $(".covid-data").append(active_para);
-                    let recovered_para = $("<p></p>").text(`Recovered: ${recovered}`);
-                    $(".covid-data").append(recovered_para);
-                    let deaths_para = $("<p></p>").text(`Deaths: ${deaths}`);
-                    $(".covid-data").append(deaths_para);
+                function get_comma_number(number) {
+                    num_str = String(number);
+                    let ans = "";
+                    for (let index = 0; index < num_str.length; index++) {
+                        if (index % 3 == 0 && index != 0) {
+                            ans = ", " + ans;
+                        }
+                        ans = num_str[num_str.length - 1 - index] + ans;
+                    }
+                    return ans;
+                }
+
+                function displayData(deaths, recovered, confirmed, active, type) {
+                    $(`.${type}-data > div > .total > .value`).text(" " + get_comma_number(confirmed));
+                    $(`.${type}-data > div > .active > .value`).text(" " + get_comma_number(active));
+                    $(`.${type}-data > div > .recovered > .value`).text(" " + get_comma_number(recovered));
+                    $(`.${type}-data > div > .deaths > .value`).text(" " + get_comma_number(deaths));
                 }
 
                 function handleUserStateData(response) {
-                    console.log(response);
-                    let stateHeader = $("<h1></h1>").text(`${state}'s Data`);
-                    $(".covid-data").append(stateHeader);
-                    displayData(response["deaths"], response["recovered"], response["confirmed"], response["active"]);
+                    $(".state-data > div > .topic > .value").text(`${state}'s Data`);
+                    displayData(response["deaths"], response["recovered"], response["confirmed"], response["active"], "state");
                 }
 
                 $.ajax(settings).done(function(response) {
@@ -83,15 +88,16 @@ $(document).ready(function() {
                             handleUserStateData(state_data);
                         }
                     }
-                    let countryHeader = $("<h1></h1>").text(`${country}'s Data`);
-                    $(".covid-data").append(countryHeader);
-                    displayData(country_deaths, country_recovered, country_confirmed, country_active);
+                    $(".country-data > div > .topic > .value").text(`${country}'s Data`);
+                    displayData(country_deaths, country_recovered, country_confirmed, country_active, "country");
+                    $(".covid-data").removeClass("hidden");
                 });
             }
         }
 
         $(".query").click(function() {
             if ($(".country-menu").val() == "Choose your country" || $(".state-menu").val() == "Choose your state") {
+                $(".covid-data").addClass("hidden");
                 alert("Please fill in country and state.");
             } else {
                 locationFound($(".country-menu").val(), $(".state-menu").val());

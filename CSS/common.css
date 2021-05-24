@@ -1,7 +1,7 @@
 .main {
     width: 100%;
     height: 90vh;
-    background: url("/IMAGES/Screenshot\ 2021-05-24\ at\ 7.28.07\ AM.png");
+    background: url("/IMAGES/background.png");
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0%;
@@ -25,4 +25,20 @@
     background-color: #1B1B1E;
     text-decoration: none;
     color: white;
+}
+
+.div-center {
+    margin: auto;
+}
+
+.form-blured-background {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.data-blured-background {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.value {
+    display: inline-block;
 }
