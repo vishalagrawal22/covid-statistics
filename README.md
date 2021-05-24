@@ -14,7 +14,7 @@ This project is a static site with the following features:-
 3. https://locationiq.com/geocoding (reverse geocoding)
 
 ## User Guide
-As this is a static site (client-side), we couldn't provide the API key.
+As this is a static site (client-side), we can't provide the API key.
 
 To use the website, you need two API keys
 1. RapidAPI key
