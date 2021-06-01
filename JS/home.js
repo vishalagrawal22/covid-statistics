@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     let debug = config.correctnessFactor;
     debug = 0;
     if (config.usingWorldStatsAPI) {
@@ -26,7 +26,7 @@ $(document).ready(function() {
             }
         };
 
-        $.ajax(settings).done(function(response) {
+        $.ajax(settings).done(function (response) {
             console.log("API Response Received");
             console.log(response.response);
             let data_outer_array = response.response;

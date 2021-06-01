@@ -1,5 +1,7 @@
 # Covid Statistics
 
+[I'm an inline-style link](https://vishalagrawal22.github.io/covid-statistics/)
+
 ## Introduction
 
 This project is a static site with the following features:-
