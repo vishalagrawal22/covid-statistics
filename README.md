@@ -1,6 +1,6 @@
 # Covid Statistics
 
-[I'm an inline-style link](https://vishalagrawal22.github.io/covid-statistics/)
+[GITHUB PAGES LINK](https://vishalagrawal22.github.io/covid-statistics/)
 
 ## Introduction
 
