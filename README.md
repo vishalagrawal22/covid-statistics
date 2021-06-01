@@ -16,5 +16,4 @@ This project is a static site with the following features:-
 3. https://locationiq.com/geocoding (reverse geocoding)
 
 ## Extra Info
-1. Covid-19-statistics API has a latency of 1s, so segments might take time to load
-2. Covid-19-statistics API doesn't instantly update their data, so the data displayed in the second and third sections is two days older than the current date.
+1. Covid-19-statistics API has a latency of 1s, so segments might take time to load.
