@@ -27,7 +27,7 @@ $(document).ready(function () {
 
         $.ajax(settings).done(function (response) {
             console.log("API Response Received");
-            console.log(response.response);
+            // console.log(response.response);
             let data_outer_array = response.response;
 
             let cases_data = data_outer_array[0]["cases"];
