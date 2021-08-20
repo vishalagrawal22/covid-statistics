@@ -36,7 +36,7 @@ $(document).ready(function() {
             let year = today.getFullYear();
             let api_date = `${year}-${month}-${day}`;
             let api_url = `https://covid-19-statistics.p.rapidapi.com/reports?date=${api_date}&region_name=${country}`;
-            console.log(api_url);
+            // console.log(api_url);
             const settings = {
                 "async": true,
                 "crossDomain": true,
@@ -73,13 +73,13 @@ $(document).ready(function() {
             }
 
             $.ajax(settings).done(function(response) {
-                console.log(response);
+                // console.log(response);
                 let country_deaths = 0;
                 let country_recovered = 0;
                 let country_confirmed = 0;
                 let country_active = 0;
                 for (state_data of response["data"]) {
-                    console.log(state_data);
+                    // console.log(state_data);
                     country_deaths += state_data["deaths"];
                     country_recovered += state_data["recovered"];
                     country_confirmed += state_data["confirmed"];
