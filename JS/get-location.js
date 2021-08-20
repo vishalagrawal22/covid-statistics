@@ -29,7 +29,6 @@ $(document).ready(function() {
             };
 
             $.ajax(settings).done(function(response) {
-                console.log(response);
                 $(`.location-data > div > div > div > .district > .value`).text(" " + response["address"]["state_district"]);
                 $(`.location-data > div > div > div > .state > .value`).text(" " + response["address"]["state"]);
                 $(`.location-data > div > div > div > .country > .value`).text(" " + response["address"]["country"]);
@@ -51,7 +50,7 @@ $(document).ready(function() {
                 let year = today.getFullYear();
                 let api_date = `${year}-${month}-${day}`;
                 let api_url = `https://covid-19-statistics.p.rapidapi.com/reports?date=${api_date}&region_name=${country}`;
-                console.log(api_url);
+                // console.log(api_url);
                 const settings = {
                     "async": true,
                     "crossDomain": true,
